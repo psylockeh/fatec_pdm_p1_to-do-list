@@ -1,42 +1,14 @@
 import React, { useState } from 'react';
 import { Form, Button, ListGroup } from 'react-bootstrap';
 
-function TarefaEntrada({ adicionarTarefa }) {
+function TarefaEntrada() {
   const [descricao, setDescricao] = useState('');
-
-  const tarefasFicticias = [
-    'Preparar aula de programação',
-    'Fazer feira',
-    'Preparar marmitas'
-  ];
-
-  const estilosQuadro = {
-    backgroundColor: 'lightyellow', padding: '20px',
-    borderRadius: '10px', border: '1px solid darkyellow', marginBottom: '20px'
-  };
-
-  const estilosTarefa = {
-    marginBottom: '10px', border: '1px solid black', 
-    padding: '10px', borderRadius: '2px', textAlign: 'center', width: '70%',
-    marginLeft: 'auto', marginRight: 'auto'
-  };
-
-  const estilosDescricao = {
-    marginTop: 12, paddingTop: 8, paddingBottom: 8, 
-    backgroundColor: 'white', color: 'black', border: '1px solid black', 
-    width: '100%', borderRadius: 3, textAlign: 'center'
-  };
-
-  const estilosBotao = {
-    marginTop: 12, paddingTop: 8, paddingBottom: 8, 
-    backgroundColor: 'lightcyan', color: 'black', border: '1px solid lightskyblue', 
-    width: '100%', borderRadius: 3
-  };
+  const [tarefas, setTarefas] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (descricao) {
-      adicionarTarefa(descricao);
+      setTarefas([...tarefas, descricao]);
       setDescricao('');
     }
   };
@@ -46,26 +18,25 @@ function TarefaEntrada({ adicionarTarefa }) {
       <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Control
-            style={estilosDescricao}
+            className='mt-3 py-2 bg-white text-dark border border-dark w-100 rounded text-center'
             type="text"
             value={descricao}
             onChange={(e) => setDescricao(e.target.value)}
             placeholder="Digite a descrição de uma nova tarefa"
           />
         </Form.Group>
-        <Button style={estilosBotao} type="submit" disabled>OK</Button>
+        <Button className='mt-1 py-2 bg-light text-dark border border-info w-100 rounded' type="submit">OK</Button>
       </Form>
 
-      <div style={estilosQuadro}>
+      <div className=' p-4 mb-4 mt-2 rounded border border-warning' style={{backgroundColor: 'lightyellow'}}>
         <ListGroup>
-          {tarefasFicticias.map((tarefa, index) => (
-            <ListGroup.Item key={index} style={estilosTarefa}>
+          {tarefas.map((tarefa, index) => (
+            <ListGroup.Item key={index} className='p-2 mb-2 border border-dark text-center w-70 mx-auto rounded-1' style={{width: '70%'}}>
               {tarefa}
             </ListGroup.Item>
           ))}
         </ListGroup>
       </div>
-      
     </>
   );
 }

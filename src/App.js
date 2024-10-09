@@ -15,7 +15,7 @@ function App() {
       <Row>
         <Col>
           <TarefaEntrada adicionarTarefa={adicionarTarefa} />
-          <TarefaLista />
+          <TarefaLista tarefas={tarefas} />
         </Col>
       </Row>
     </Container>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import TarefaEntrada from './TarefaEntrada';
+import TarefaLista from './TarefaLista';
 
 function App() {
   const [tarefas, setTarefas] = useState([]);
@@ -13,7 +14,8 @@ function App() {
     <Container>
       <Row>
         <Col>
-        <h1 className='text-center border mt-3'>Hello, Tarefas</h1>
+          <TarefaEntrada adicionarTarefa={adicionarTarefa} />
+          <TarefaLista tarefas={tarefas} />
         </Col>
       </Row>
     </Container>

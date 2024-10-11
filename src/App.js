@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import TarefaEntrada from './TarefaEntrada';
 
 function App() {
+  const [tarefas, setTarefas] = useState([]);
+
+  const adicionarTarefa = (descricao) => {
+    setTarefas([...tarefas, descricao]);
+  };
+
   return (
     <Container>
       <Row>
         <Col>
-          <h1>Hello, lembretes</h1>
+          <TarefaEntrada adicionarTarefa={adicionarTarefa} />
         </Col>
       </Row>
     </Container>

@@ -13,7 +13,7 @@ function App() {
     <Container>
       <Row>
         <Col>
-          <TarefaEntrada adicionarTarefa={adicionarTarefa} />
+        <h1 className='text-center border mt-3'>Hello, Tarefas</h1>
         </Col>
       </Row>
     </Container>
